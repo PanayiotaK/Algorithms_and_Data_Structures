@@ -1,50 +1,49 @@
 def hash_quadratic(d):
+    #count= the number of elements in the table. If count>19 the table is full 
     count=0
-    table=["-"]*19
+    table=["-"]*19         #initialise a table of size 19 with '-' in all the possitions 
     for k in d:
-        p=0
+        p=0               #p= the initial possition  found in the hash table 
         prev_p=0
-        addition=1
+        addition=1        #the variable that increases if the found possition in the table is occupied 
         i=(6*k+3)%19
         p=i
-        count+=1
-        #print('to i einai ' , i)
+        count+=1        
         if count>19:
             return table
-        while(table[i] != '-' ):
+        while(table[i] != '-' ):            #while there is collision  do:
             prev_p=i
-            i=(p+(addition**2))% 19
-            #print("to neo i einai ;" ,i)
-            if(prev_p==i ):
+            i=(p+(addition**2))% 19         #calculate the new position
+            if(prev_p==i ):                 # if the previus possition  == to the new possition that means the
+                                            #possition will loop back to the same possitions of the hash table  and the number will not enter the table. 
                 count-=1
                 break
-            addition+=1                       
-        if(prev_p==i and prev_p!=0):
+            addition+=1                      
+        if(prev_p==i and prev_p!=0):      # the number is not going to be placed in the hash table so we continue to the next number  
             continue        
-        table[i]=k
-       
+        table[i]=k     
     
     return table
 
 
 
 def hash_double(d):    
-    count=0
-    table=['-']*19
+    count=0                 #counts how many numbers are entered in the hash table 
+    table=['-']*19          #initialise table of size 19
     for k in d:
         addition=0
         j=1
         i=(6*k+3) % 19
         p=i
         count+=1
-        if count>19:
+        if count>19:                #if count  greater than 19 that means the hash table is full 
             return table
-        while(table[i] != '-'):
+        while(table[i] != '-'):     #if there is collision do the following statments
             addition=j*(11-(k%11))
             i=(p+addition)% 19
             j+=1
        
-        table[i]=k                   
+        table[i]=k                  #place the number to the position found                
         
     return table
 
@@ -63,4 +62,5 @@ def test_dh():
     print ("all tests passed")
 
 
-test_dh()
+
+
