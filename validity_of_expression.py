@@ -1,6 +1,3 @@
-#q3.py
-#algorithms and data structures assignment 2018-19 question 3
-#matthew johnson 21 november 2018
 
 #####################################################
 
